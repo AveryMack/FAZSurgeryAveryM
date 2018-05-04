@@ -1,56 +1,36 @@
 -----------------------------------------------------------------------------------------
 --
--- splash_screen.lua
---
+-- level1_screen.lua
 -- Created by: Avery Mack
---
--- Date: April 26, 2018
---
--- Description: This is the splash screen of the game. It displays the 
--- company logo that fades in, flys across the screen spinning and plays sound.
--- Their is also text that fades in at the top saying FAZ Games.
+-- Date: April 10, 2018
+-- Description: This is the level 1 screen of the game.
 -----------------------------------------------------------------------------------------
 
--- Use Composer Library
+-----------------------------------------------------------------------------------------
+-- INITIALIZATIONS
+-----------------------------------------------------------------------------------------
+
+-- Use Composer Libraries
 local composer = require( "composer" )
-
--- Name the Scene
-sceneName = "splash_screen"
+local widget = require( "widget" )
 
 -----------------------------------------------------------------------------------------
 
--- Create Scene Object
+-- Naming Scene
+sceneName = "levelSelectScreen"
+
+-----------------------------------------------------------------------------------------
+
+-- Creating Scene Object
 local scene = composer.newScene( sceneName )
 
-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
 -- LOCAL VARIABLES
 -----------------------------------------------------------------------------------------
- 
+
 -- The local variables for this scene
-local logo
-local scrollSpeed = 8
-local fAZGames = audio.loadSound("sounds/FAZGamesEdited.wav")
-local fAZGamesChannel
-local AZGamesText
-local rotationSpeed = 3
-local speed = 3
---------------------------------------------------------------------------------------------
--- LOCAL FUNCTIONS
---------------------------------------------------------------------------------------------
+local bkg_image
 
-
--- The function that moves the logo across the screen and makes it rotate and fade in
-local function moveLogo()
-    logo.alpha = logo.alpha + 0.01
-    logo.x = logo.x + scrollSpeed
-    logo.rotation = logo.rotation + speed
-    FAZGamesText.alpha = FAZGamesText.alpha + 0.01
-end
-
--- The function that will go to the main menu 
-local function gotoMainMenu()
-    composer.gotoScene( "main_menu" )
-end
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
 -----------------------------------------------------------------------------------------
@@ -61,58 +41,44 @@ function scene:create( event )
     -- Creating a group that associates objects with the scene
     local sceneGroup = self.view
 
-    -- set the background to be black
-    display.setDefault("background", 0, 0, 0)
+    -----------------------------------------------------------------------------------------
 
-    -- Insert the logo image
-    logo = display.newImageRect("Images/CompanyLogoAvery.png", 200, 200)
+    -- Insert the background image
+    bkg_image = display.newImageRect("Images/LevelSelect.png", display.contentWidth, display.contentHeight)
+    bkg_image.x = display.contentCenterX
+    bkg_image.y = display.contentCenterY
+    bkg_image.width = display.contentWidth
+    bkg_image.height = display.contentHeight
 
-    -- make the logo transpearent 
-    logo.alpha = 0
+    -- Send the background image to the back layer so all other objects can be on top
+    bkg_image:toBack()
 
-    -- set the initial x and y position of the puppy
-    logo.x = 100
-    logo.y = display.contentHeight/2
+        -- Insert background image into the scene group in order to ONLY be associated with this scene
+    sceneGroup:insert( bkg_image )    
 
-    -- Insert objects into the scene group in order to ONLY be associated with this scene
-    sceneGroup:insert( logo )
+end --function scene:create( event )
 
-    -- create the text that will say FAZ Games
-    FAZGamesText = display.newText("FAZ Games", display.contentWidth/2, display.contentHeight*0.5/3, nil, 50)
-    FAZGamesText:setTextColor(143/255, 105/255, 18/255)
-    FAZGamesText.alpha = 0
-
-
-end -- function scene:create( event )
-
---------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
 
 -- The function called when the scene is issued to appear on screen
 function scene:show( event )
 
     -- Creating a group that associates objects with the scene
-
-    -----------------------------------------------------------------------------------------
     local sceneGroup = self.view
-
     local phase = event.phase
 
     -----------------------------------------------------------------------------------------
 
-    -- Called when the scene is still off screen (but is about to come on screen).
     if ( phase == "will" ) then
-       
+
+        -- Called when the scene is still off screen (but is about to come on screen).
     -----------------------------------------------------------------------------------------
 
     elseif ( phase == "did" ) then
-        -- start the splash screen music
-        FAZGamesChannel = audio.play( FAZGames )
 
-        -- Call the moveLogo function as soon as we enter the frame.
-        Runtime:addEventListener("enterFrame", moveLogo)
-
-        -- Go to the main menu screen after the given time.
-        timer.performWithDelay ( 3000, gotoMainMenu)     
+        -- Called when the scene is now on screen.
+        -- Insert code here to make the scene come alive.
+        -- Example: start timers, begin animation, play audio, etc.
 
     end
 
@@ -129,18 +95,15 @@ function scene:hide( event )
 
     -----------------------------------------------------------------------------------------
 
-    -- Called when the scene is on screen (but is about to go off screen).
-    -- Insert code here to "pause" the scene.
-    -- Example: stop timers, stop animation, stop audio, etc.
-    if ( phase == "will" ) then  
+    if ( phase == "will" ) then
+        -- Called when the scene is on screen (but is about to go off screen).
+        -- Insert code here to "pause" the scene.
+        -- Example: stop timers, stop animation, stop audio, etc.
 
     -----------------------------------------------------------------------------------------
 
-    -- Called immediately after scene goes off screen.
     elseif ( phase == "did" ) then
-        
-        -- stop FAZ Games channel for this screen
-        audio.stop(FAZGamesChannel)
+        -- Called immediately after scene goes off screen.
     end
 
 end --function scene:hide( event )
@@ -155,10 +118,10 @@ function scene:destroy( event )
 
     -----------------------------------------------------------------------------------------
 
-
     -- Called prior to the removal of scene's view ("sceneGroup").
     -- Insert code here to clean up the scene.
     -- Example: remove display objects, save state, etc.
+
 end -- function scene:destroy( event )
 
 -----------------------------------------------------------------------------------------
