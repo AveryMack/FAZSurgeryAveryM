@@ -44,8 +44,6 @@ local levelsButton
 -- LOCAL FUNCTIONS
 -----------------------------------------------------------------------------------------
 
---FAZGamesText.isVisible = false
-
 -- Creating Transition to Level1 Screen
 local function LevelSelectScreenTransition( )
     composer.gotoScene( "levelSelectScreen", {effect = "fade", time = 1000})
@@ -98,8 +96,8 @@ function scene:create( event )
     playButton = widget.newButton( 
         {   
             -- Set its position on the screen relative to the screen size
-            x = display.contentWidth*7.1/8,
-            y = display.contentHeight*2/8,
+            x = display.contentWidth*4/8,
+            y = display.contentHeight*6/8,
             width = 200,
             height = 100, 
 
@@ -117,8 +115,8 @@ function scene:create( event )
     creditsButton = widget.newButton( 
         {
             -- Set its position on the screen relative to the screen size
-            x = display.contentWidth*7.1/8,
-            y = display.contentHeight*3.2/8,
+            x = display.contentWidth*1.5/8,
+            y = display.contentHeight*6.8/8,
             width = 200,
             height = 100, 
 
@@ -135,8 +133,8 @@ function scene:create( event )
     instructionsButton = widget.newButton( 
         {
             -- Set its position on the screen relative to the screen size
-            x = display.contentWidth*7.1/8,
-            y = display.contentHeight*4.5/8,
+            x = display.contentWidth*6.5/8,
+            y = display.contentHeight*6.9/8,
             width = 200,
             height = 100, 
 

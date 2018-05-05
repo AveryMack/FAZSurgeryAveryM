@@ -11,6 +11,9 @@
 -- Their is also text that fades in at the top saying FAZ Games.
 -----------------------------------------------------------------------------------------
 
+-- hide the status bar
+display.setStatusBar(display.HiddenStatusBar)
+
 -- Use Composer Library
 local composer = require( "composer" )
 
@@ -29,9 +32,9 @@ local scene = composer.newScene( sceneName )
 -- The local variables for this scene
 local logo
 local scrollSpeed = 8
-local fAZGames = audio.loadSound("sounds/FAZGamesEdited.wav")
-local fAZGamesChannel
-local AZGamesText
+local FAZGames = audio.loadSound("sounds/FAZGamesEdited.wav")
+local FAZGamesChannel
+local FAZGamesText
 local rotationSpeed = 3
 local speed = 3
 --------------------------------------------------------------------------------------------
@@ -122,6 +125,8 @@ end --function scene:show( event )
 
 -- The function called when the scene is issued to leave the screen
 function scene:hide( event )
+
+    FAZGamesText.isVisible = false 
 
     -- Creating a group that associates objects with the scene
     local sceneGroup = self.view

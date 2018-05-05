@@ -30,6 +30,13 @@ local scene = composer.newScene( sceneName )
 
 -- The local variables for this scene
 local bkg_image
+local backButton
+
+
+-- Creating Transitioning Function back to main menu
+local function BackTransition( )
+    composer.gotoScene( "main_menu", {effect = "slideUp", time = 500})
+end
 
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
@@ -44,7 +51,7 @@ function scene:create( event )
     -----------------------------------------------------------------------------------------
 
     -- Insert the background image
-    bkg_image = display.newImageRect("Images/LevelSelect.png", display.contentWidth, display.contentHeight)
+    bkg_image = display.newImageRect("Images/LevelSelectAveryM.png", display.contentWidth, display.contentHeight)
     bkg_image.x = display.contentCenterX
     bkg_image.y = display.contentCenterY
     bkg_image.width = display.contentWidth
@@ -57,6 +64,8 @@ function scene:create( event )
     sceneGroup:insert( bkg_image )    
 
 end --function scene:create( event )
+
+
 
 -----------------------------------------------------------------------------------------
 
