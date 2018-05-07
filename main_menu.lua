@@ -58,6 +58,8 @@ end
 local function InstructionsTransition( )
     composer.gotoScene( "instructions_screen", {effect = "slideDown", time = 500})
 end 
+
+
 -----------------------------------------------------------------------------------------
 
 -----------------------------------------------------------------------------------------
@@ -96,10 +98,10 @@ function scene:create( event )
     playButton = widget.newButton( 
         {   
             -- Set its position on the screen relative to the screen size
-            x = display.contentWidth*4/8,
-            y = display.contentHeight*6/8,
-            width = 200,
-            height = 100, 
+            x = display.contentWidth*3.7/8,
+            y = display.contentHeight*6.2/8,
+            width = 250,
+            height = 150, 
 
             -- Insert the images here
             defaultFile = "Images/PlayButtonUnpressedNiceM.png",
@@ -115,7 +117,7 @@ function scene:create( event )
     creditsButton = widget.newButton( 
         {
             -- Set its position on the screen relative to the screen size
-            x = display.contentWidth*1.5/8,
+            x = display.contentWidth*1/8,
             y = display.contentHeight*6.8/8,
             width = 200,
             height = 100, 
@@ -134,7 +136,7 @@ function scene:create( event )
         {
             -- Set its position on the screen relative to the screen size
             x = display.contentWidth*6.5/8,
-            y = display.contentHeight*6.9/8,
+            y = display.contentHeight*6.8/8,
             width = 200,
             height = 100, 
 

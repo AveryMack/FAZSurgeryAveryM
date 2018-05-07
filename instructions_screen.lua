@@ -75,15 +75,15 @@ function scene:create( event )
     {
         -- Setting Position
         x = display.contentWidth*1/8,
-        y = display.contentHeight*2/16,
+        y = display.contentHeight*14/16,
 
         -- Setting Dimensions
         -- width = 1000,
         -- height = 106,
 
         -- Setting Visual Properties
-        defaultFile = "Images/Back Button Unpressed.png",
-        overFile = "Images/Back Button Pressed.png",
+        defaultFile = "Images/BackButtonUnpressed.png",
+        overFile = "Images/BackButtonPressed.png",
 
         -- Setting Functional Properties
         onRelease = BackTransition
