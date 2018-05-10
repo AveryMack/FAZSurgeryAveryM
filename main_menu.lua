@@ -56,7 +56,7 @@ end
 
 -- creating transition function to instructions page
 local function InstructionsTransition( )
-    composer.gotoScene( "instructions_screen", {effect = "slideDown", time = 500})
+    composer.gotoScene( "instructions_screen", {effect = "zoomOutInRotate", time = 500})
 end 
 
 
