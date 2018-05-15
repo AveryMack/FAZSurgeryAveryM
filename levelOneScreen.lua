@@ -17,7 +17,7 @@ local widget = require( "widget" )
 -----------------------------------------------------------------------------------------
 
 -- Naming Scene
-sceneName = "levelSelectScreen"
+sceneName = "levelOneScreen"
 
 -----------------------------------------------------------------------------------------
 
@@ -31,16 +31,12 @@ local scene = composer.newScene( sceneName )
 -- The local variables for this scene
 local bkg_image
 local backButton
-local levelOneButton
+local pauseButton
+
 
 -- Creating Transitioning Function back to main menu
 local function BackTransition( )
-    composer.gotoScene( "main_menu", {effect = "fade", time = 500})
-end
-
--- creating function to the level one screen 
-local function LevelOneTransition()
-    composer.gotoScene( "levelOneScreen", {effect = "fade", time = 500})
+    composer.gotoScene( "levelSelectScreen", {effect = "fade", time = 500})
 end
 
 -----------------------------------------------------------------------------------------
@@ -61,6 +57,9 @@ function scene:create( event )
     bkg_image.y = display.contentCenterY
     bkg_image.width = display.contentWidth
     bkg_image.height = display.contentHeight
+
+    -- Send the background image to the back layer so all other objects can be on top
+    bkg_image:toBack()
 
         -- Insert background image into the scene group in order to ONLY be associated with this scene
     sceneGroup:insert( bkg_image )   
@@ -89,36 +88,9 @@ function scene:create( event )
 
     -- Associating Buttons with this scene
     sceneGroup:insert( backButton )
-
-
-    -- Creating level one Button
-    levelOneButton = widget.newButton( 
-    {
-        -- Setting Position
-        x = display.contentWidth*1.5/8,
-        y = display.contentHeight*8/16,
-
-        -- Setting Dimensions
-        -- width = 1000,
-        -- height = 106,
-
-        -- Setting Visual Properties
-        defaultFile = "Images/LevelOneButtonUnpressed.png",
-        overFile = "Images/LevelOneButtonPressed.png",
-
-        -- Setting Functional Properties
-        onRelease = LevelOneTransition
-
-    } )
-
-    -----------------------------------------------------------------------------------------
-
-    -- Associating Buttons with this scene
-    sceneGroup:insert( levelOneButton )
     
-
-
 end --function scene:create( event ) 
+
 -----------------------------------------------------------------------------------------
 
 -- The function called when the scene is issued to appear onscreen 
